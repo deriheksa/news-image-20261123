@@ -1,33 +1,36 @@
-"""make.fun bounty entry runner.
+"""Entry point for the news-image-20261123 bounty entry.
 
-Copies entry.png (bundled next to this script) to /output/entry.png
-so the grader can pick it up. Pure Python standard library only.
+The artwork is pre-rendered and shipped alongside this script as
+``entry.png``. This script only copies it to ``/output/entry.png``,
+where the grader expects it. Pure Python standard library, nothing
+else is imported.
 """
 
 import os
 import shutil
-import sys
+
+SOURCE_NAME = "entry.png"
+DESTINATION = "/output/entry.png"
 
 
-def resolve_entry_paths():
-    """Return (src, dst) for the bundled entry.png and its output path."""
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    src = os.path.join(script_dir, "entry.png")
-    dst = os.path.join("/output", "entry.png")
-    return src, dst
+def source_path():
+    """Absolute path of the entry image next to this script."""
+    here = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(here, SOURCE_NAME)
 
 
-def main() -> int:
-    src, dst = resolve_entry_paths()
-    dst_dir = os.path.dirname(dst)
-
-    os.makedirs(dst_dir, exist_ok=True)
+def copy_entry(src, dst):
+    """Copy the entry image to the output location and return its size."""
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
     shutil.copyfile(src, dst)
+    return os.path.getsize(dst)
 
-    size = os.path.getsize(dst)
-    print(f"Copied entry.png -> {dst} ({size} bytes)")
+
+def main():
+    size = copy_entry(source_path(), DESTINATION)
+    print(f"Wrote {DESTINATION} ({size} bytes)")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

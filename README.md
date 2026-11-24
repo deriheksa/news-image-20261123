@@ -4,6 +4,6 @@
 [![rank](https://make.fun/badge/news-image-20261123/deriheksa/news-image-20261123/rank.svg)](https://make.fun/bounty/news-image-20261123/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261123)
 [![reward](https://make.fun/badge/news-image-20261123/deriheksa/news-image-20261123/reward.svg)](https://make.fun/bounty/news-image-20261123?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261123)
 
-Sum up 23 November's world news in one image — a newspaper front page with 43 verified stories: 3 heroes, 10 grid cards, 30 ALSO briefs, a UTC timeline, a world map, and a date check.
+A newspaper front page that sums up Monday 23 November 2026 world news in a single image: 43 verified stories led by 3 heroes and 10 grid cards, plus 30 ALSO briefs, a UTC timeline, a world map, and a date check. Every story is labelled by verification status, so what is confirmed reads as confirmed and what is still a claim reads as a claim.
 
-Built with Python (stdlib only). `main.py` copies the pre-rendered `entry.png` to `/output/entry.png`.
+`main.py` (pure Python standard library, no third-party packages) copies the pre-rendered `entry.png` to `/output/entry.png`.
